@@ -16,15 +16,13 @@ using System.Windows.Shapes;
 namespace SupinfoDeezer
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Logique d'interaction pour PageAlbum.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class PageAlbum : Page
     {
-        public MainWindow()
+        public PageAlbum()
         {
             InitializeComponent();
-            mainFrame.Navigate(new Uri("PageAccueil.xaml", UriKind.RelativeOrAbsolute));
-            //BarreRecherche.TextChanged
         }
     }
 }
