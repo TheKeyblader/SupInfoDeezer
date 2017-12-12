@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Api;
 
 namespace SupinfoDeezer
 {
@@ -20,9 +21,23 @@ namespace SupinfoDeezer
     /// </summary>
     public partial class PageAlbum : Page
     {
+        public string Image { get; set; }
+        public string Album { get; set; }
+        public string Artist { get; set; }
+
         public PageAlbum()
         {
             InitializeComponent();
+            DataContext = this;
+            List<Album> album = Class1.SearchAlbumByString("All Falls Down");
+            GetAlbumInfo(album.First());
+        }
+
+        public void GetAlbumInfo(Album album)
+        {
+            Image = album.Cover;
+            Album = album.Title;
+            Artist = album.Artist.Name;
         }
     }
 }
