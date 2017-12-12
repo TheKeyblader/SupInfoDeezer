@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SupinfoDeezer
 {
     /// <summary>
-    /// Logique d'interaction pour Albums.xaml
+    /// Logique d'interaction pour PageArtiste.xaml
     /// </summary>
-    public partial class Albums : Window
+    public partial class PageArtiste : Page
     {
-        public Albums()
+        public PageArtiste()
         {
             InitializeComponent();
         }
