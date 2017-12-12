@@ -27,7 +27,7 @@
             <ColumnDefinition Width="20*"/>
             <ColumnDefinition Width="2.5*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="1" Grid.Row="1">Album</TextBlock>
+        <Image Source="https://e-cdns-images.dzcdn.net/images/cover/2e018122cb56986277102d2041a592c8/120x120-000000-80-0-0.jpg" Grid.Column="1" Grid.Row="1"/>
         <TextBlock Grid.Column="3" Grid.Row="1">Album</TextBlock>
         <TextBlock Grid.Column="1" Grid.Row="3">Album</TextBlock>
         <TextBlock Grid.Column="3" Grid.Row="3">Album</TextBlock>

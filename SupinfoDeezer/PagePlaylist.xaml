@@ -9,6 +9,17 @@
       Title="PagePlaylist">
 
     <Grid>
-        
+        <ListView Margin="10" Name="Artiste" ItemsSource="{Binding Source={StaticResource myTodoList}}" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <Image Source="{Binding Image}"/>
+                        <TextBlock Text="{Binding Titre}"/>
+                        <TextBlock Text="{Binding Artiste}"/>
+                        <TextBlock Text="{Binding Album}"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

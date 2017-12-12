@@ -8,33 +8,17 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="PageAlbum">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="10*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2.5*"/>
-            <ColumnDefinition Width="20*"/>
-            <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="20*"/>
-            <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="20*"/>
-            <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="20*"/>
-            <ColumnDefinition Width="2.5*"/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="1" Grid.Row="1">Album</TextBlock>
-        <TextBlock Grid.Column="3" Grid.Row="1">Album</TextBlock>
-        <TextBlock Grid.Column="1" Grid.Row="3">Album</TextBlock>
-        <TextBlock Grid.Column="3" Grid.Row="3">Album</TextBlock>
-
-        <TextBlock Grid.Column="5" Grid.Row="1">Album</TextBlock>
-        <TextBlock Grid.Column="7" Grid.Row="1">Album</TextBlock>
-        <TextBlock Grid.Column="5" Grid.Row="3">Album</TextBlock>
-        <TextBlock Grid.Column="7" Grid.Row="3">Album</TextBlock>
-    </Grid>
+        <Grid>
+            <ListView Margin="10" Name="Artiste" ItemsSource="{Binding Source={StaticResource myTodoList}}" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <Image Source="{Binding Image}"/>
+                            <TextBlock Text="{Binding ALbum}"/>
+                            <TextBlock Text="{Binding Artiste}"/>
+                    </WrapPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
 </Page>

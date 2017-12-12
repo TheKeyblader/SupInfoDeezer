@@ -23,7 +23,7 @@ namespace SupinfoDeezer
         public MainWindow()
         {
             InitializeComponent();
-            mainFrame.Navigate(new Uri("PageAlbum.xaml", UriKind.RelativeOrAbsolute));
+            mainFrame.Navigate(new Uri("PageAccueil.xaml", UriKind.RelativeOrAbsolute));
             //BarreRecherche.TextChanged
         }
     }
