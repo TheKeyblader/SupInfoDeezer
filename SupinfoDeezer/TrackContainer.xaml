@@ -1,4 +1,4 @@
-﻿<Page x:Class="SupinfoDeezer.PageAlbum"
+﻿<Page x:Class="SupinfoDeezer.TrackContainer"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,18 +9,20 @@
       Title="PageAlbum">
 
         <Grid>
-        <ListView ItemsSource="{Binding Albums}" Margin="10">
+        <ListView Name="Container" ItemsSource="{Binding Tracks}" Margin="10" MouseDoubleClick="GetId">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="1*" />
-                            <ColumnDefinition Width="auto" />
                         </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Source="{Binding Cover}"/>
-                        <TextBlock Grid.Column="1" Text="{Binding Title}"/>
-                        <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{Binding Artist.Name}"/>
+                        <Image Grid.Column="0" Source="{Binding Album.Cover}" Height="100"/>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="{Binding Title_Short}" FontSize="16"/>
+                            <TextBlock Text="{Binding Title_Version}" FontSize="12"/>
+                            <TextBlock Text="{Binding Artist.Name}" FontSize="16"/>
+                        </StackPanel>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

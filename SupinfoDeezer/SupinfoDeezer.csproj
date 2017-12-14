@@ -73,7 +73,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PageAlbum.xaml">
+    <Page Include="TrackContainer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -90,8 +90,8 @@
     <Compile Include="PageAccueil.xaml.cs">
       <DependentUpon>PageAccueil.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PageAlbum.xaml.cs">
-      <DependentUpon>PageAlbum.xaml</DependentUpon>
+    <Compile Include="TrackContainer.xaml.cs">
+      <DependentUpon>TrackContainer.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageArtiste.xaml.cs">
       <DependentUpon>PageArtiste.xaml</DependentUpon>
