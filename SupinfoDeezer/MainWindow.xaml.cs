@@ -27,7 +27,7 @@ namespace SupinfoDeezer
         {
             InitializeComponent();
             mainFrame.Navigate(new Uri("PageAlbum.xaml", UriKind.RelativeOrAbsolute));
-            PageAlbum = (PageAlbum) mainFrame;
+            PageAlbum = (PageAlbum) mainFrame.Content;
         }
 
         private void BarreRecherche_TextChanged(object sender, TextChangedEventArgs e)
