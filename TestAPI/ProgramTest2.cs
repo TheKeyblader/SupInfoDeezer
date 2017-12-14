@@ -17,24 +17,35 @@ namespace TestAPI
     {
         static void Main(string[] args)
         {
+           //Microsoft.IdentityModel.Protocols.OpenIdConnect.OpenIdConnectConfiguration 
+
+
+            
+            //System.Diagnostics.Process.Start("https://connect.deezer.com/oauth/auth.php?app_id=263102&redirect_uri=http://www.deezer.com&perms=basic_access,manage_library,delete_library,access_token"); // Ouverture de la page WEB, dans le navigateur par default. 
+                                                                                                                                                                                                          // Requete Post 
+            WebRequest Modif = WebRequest.Create("https://api.deezer.com/user/9070265/playlists/?title=test");
+            Modif.Method = "POST"; 
 
 
 
+
+
+
+            //Requete GET (obtention d'information) 
             Search IdCherche = new Search();
-        
-            WebRequest request = WebRequest.Create(IdCherche.SearchAlbum("\"Ultra\"")); // requete a envoyer
-            request.Credentials = CredentialCache.DefaultCredentials;
+            WebRequest request = WebRequest.Create(IdCherche.SearchPlaylistByUser(9070265,"zamiquie")); // requete a envoyer
+            request.Credentials = CredentialCache.DefaultCredentials; 
             HttpWebResponse reponse = (HttpWebResponse)request.GetResponse(); // variable de reception de la requete 
-            request.Method = "GET"; // type de demande
+            request.Method = "POST"; // type de demande (get = obtenir, post = modifier, Delete)
             Stream dataStream = reponse.GetResponseStream(); // envoie de la requete
             Console.WriteLine(reponse.StatusDescription);
             StreamReader reader = new StreamReader(dataStream); //Lecture de la Requete
-            string StringReponse = reader.ReadToEnd();// Convertion en String
-                                                      // Console.WriteLine(StringReponse);
+            string StringReponse = reader.ReadToEnd();// Convertion en String                                                  // Console.WriteLine(StringReponse);
             Console.WriteLine(StringReponse);
-            Search requestedObject = JsonConvert.DeserializeObject<Search>(StringReponse); // convertit string en objet
-
-            Console.WriteLine(requestedObject.Id +" "+ requestedObject.Title);// objet creer par la classe
+            
+             // Mise en objet
+            //Search requestedObject = JsonConvert.DeserializeObject<Search>(StringReponse); // convertit string en objet
+            //Console.WriteLine(requestedObject.Id + " " + requestedObject.Title);// objet creer par la classe
             
             Console.ReadLine();
 
@@ -55,8 +66,8 @@ namespace TestAPI
         public string Preview { get; set; }
         //public Artiste[];
         //pubmic Album[];
-        
-    public string SearchTrackByID(int ID)
+
+        public string SearchTrackByID(int ID)
         {
             return "https://api.deezer.com/track/" + ID.ToString();
         }
@@ -85,13 +96,13 @@ namespace TestAPI
         {
             return "https://api.deezer.com/search/artist?q=" + ArtistName;
         }
-        public string SearchAlbum (string AlbumName)
+        public string SearchAlbum(string AlbumName)
         {
             return "https://api.deezer.com/search/album?q=" + AlbumName;
         }
         public string SearchTrack_Artist(string TrackName, string ArtistName)
         {
-            return "https://api.deezer.com/search?q=track:" + TrackName + " artist:"+ ArtistName;
+            return "https://api.deezer.com/search?q=track:" + TrackName + " artist:" + ArtistName;
 
         }
         public string SearchAlbum_Artist(string AlbumName, string ArtistName)
@@ -104,8 +115,23 @@ namespace TestAPI
             return "https://api.deezer.com/search?q=track:" + TrackName + " artist:" + AlbumName;
 
         }
+        public string SearchUser(string User)
+        {
+            return "https://api.deezer.com/search?q=user:" + User;
+        }
+        public string SearchUserByID(long IDUser)
+        {
+            return "https://api.deezer.com/user/" + IDUser.ToString();
+        }
+       
+        public string SearchPlaylistByUser(int IDUser, string NameUser)
+        {
+            return "https://api.deezer.com/playlist/" + IDUser.ToString() + "/" + NameUser;
+        }
+
+
+
     }
-  
 }
     
 
