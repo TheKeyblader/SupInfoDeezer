@@ -5,15 +5,17 @@ VisualStudioVersion = 15.0.27205.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupinfoDeezer", "SupinfoDeezer\SupinfoDeezer.csproj", "{F53C50D1-0177-4848-846C-22378DBFC15A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework", "EntityFramework\EntityFramework.csproj", "{AC4D3425-ED33-4479-B53E-CE45A96FD8B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework", "EntityFramework\EntityFramework.csproj", "{AC4D3425-ED33-4479-B53E-CE45A96FD8B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{59B6B3E3-818E-45D8-9F01-A47647C8055A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{59B6B3E3-818E-45D8-9F01-A47647C8055A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Player", "Player\Player.csproj", "{E0A2B626-7A7E-46AC-8CC6-454E5D940260}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Player", "Player\Player.csproj", "{E0A2B626-7A7E-46AC-8CC6-454E5D940260}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{9B17C127-A369-42D1-A285-9779170A0D97}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWebPlayer", "TestWebPlayer\TestWebPlayer.csproj", "{78563E9B-AF40-45F1-90B4-77A841356980}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeezerPlayerLib", "DeezerPlayerLib\DeezerPlayerLib.csproj", "{C67CB8BA-74BF-4CE5-9B71-1F8885FEA10F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{78563E9B-AF40-45F1-90B4-77A841356980}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78563E9B-AF40-45F1-90B4-77A841356980}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78563E9B-AF40-45F1-90B4-77A841356980}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C67CB8BA-74BF-4CE5-9B71-1F8885FEA10F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C67CB8BA-74BF-4CE5-9B71-1F8885FEA10F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C67CB8BA-74BF-4CE5-9B71-1F8885FEA10F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C67CB8BA-74BF-4CE5-9B71-1F8885FEA10F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

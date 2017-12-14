@@ -27,15 +27,15 @@ namespace Player
     public delegate void ConnectOnEventCb(IntPtr libcConnect, IntPtr libcConnectEvent, IntPtr userdata);
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public delegate bool AppCrashDelegate();
-
     public class Connect
     {
         internal IntPtr ThisHandle;
 
         public delegate void ConnectEventArgs(DZConnectionEvent dZConnectionEvent);
         public event ConnectEventArgs OnConnection;
-        public Connect(Connect_Config config,string accesToken,bool offlineMode,ConnectEventArgs @event = null )
+        public Connect(Connect_Config config,ConnectEventArgs @event = null )
         {
+            NativeMethods.LoadClass();
             config.ConnectEventCb = OnEvent;
             if (@event != null)
             {
@@ -43,8 +43,6 @@ namespace Player
             }
             ThisHandle = dz_connect_new(ref config);
             Activate();
-            SetAccesToken(accesToken);
-            SetOfflineMode(offlineMode);
             SetCachePath(config.UserProfilePath);
         }
         private void Activate()
