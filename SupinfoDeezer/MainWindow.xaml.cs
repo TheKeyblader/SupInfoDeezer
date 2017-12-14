@@ -20,11 +20,20 @@ namespace SupinfoDeezer
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static string Recherche;
+        public PageAlbum PageAlbum { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
             mainFrame.Navigate(new Uri("PageAlbum.xaml", UriKind.RelativeOrAbsolute));
-            //BarreRecherche.TextChanged
+            PageAlbum = (PageAlbum) mainFrame;
+        }
+
+        private void BarreRecherche_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textbox = (TextBox)sender;
+            PageAlbum.GetAlbums(textbox.Text);
         }
     }
 }

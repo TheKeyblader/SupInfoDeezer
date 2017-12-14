@@ -9,16 +9,21 @@
       Title="PageAlbum">
 
         <Grid>
-            <!--<ListView Margin="10" Name="Artiste">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                       <WrapPanel>-->
-                            <Image Source="{Binding Image}" Margin="0,93,0,0"/>
-                            <TextBlock Text="{Binding Album}"/>
-                            <TextBlock Text="{Binding Artist}" Margin="85,0,-85,0"/>
-                        <!--</WrapPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>-->
-        </Grid>
+        <ListView ItemsSource="{Binding Albums}" Margin="10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="{Binding Cover}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Title}"/>
+                        <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{Binding Artist.Name}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
 </Page>

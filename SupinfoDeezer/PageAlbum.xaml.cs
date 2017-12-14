@@ -21,23 +21,18 @@ namespace SupinfoDeezer
     /// </summary>
     public partial class PageAlbum : Page
     {
-        public string Image { get; set; }
-        public string Album { get; set; }
-        public string Artist { get; set; }
+        public List<Album> Albums { get; set; } = new List<Album>();
 
         public PageAlbum()
         {
             InitializeComponent();
             DataContext = this;
-            List<Album> album = Class1.SearchAlbumByString("All Falls Down");
-            GetAlbumInfo(album.First());
+            GetAlbums();
         }
 
-        public void GetAlbumInfo(Album album)
+        public async Task GetAlbums(string text = "David Guetta")
         {
-            Image = album.Cover;
-            Album = album.Title;
-            Artist = album.Artist.Name;
+            Albums = Class1.SearchAlbumByString(text);
         }
     }
 }
