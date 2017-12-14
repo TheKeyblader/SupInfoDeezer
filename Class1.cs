@@ -3,28 +3,27 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace Api
 {
     public class Class1
     {
-        public async static void Display(string value)
+        public static void Display(string value)
         {
             Console.WriteLine("--Tracks :");
-            //DisplayMusics(await SearchTrackByString(value));
+            DisplayMusics(SearchTrackByString(value));
             Console.WriteLine();
 
             Console.WriteLine("--Albums :");
-            DisplayAlbums(await SearchAlbumByString(value));
+            DisplayAlbums(SearchAlbumByString(value));
             Console.WriteLine();
 
             Console.WriteLine("--Artists :");
-            DisplayArtists(await SearchArtistByString(value));
+            DisplayArtists(SearchArtistByString(value));
             Console.WriteLine();
 
             Console.WriteLine("--Playlists :");
-            DisplayPlaylists(await SearchPlaylistByString(value));
+            DisplayPlaylists(SearchPlaylistByString(value));
             Console.WriteLine();
         }
 
@@ -92,74 +91,74 @@ namespace Api
             }
         }
 
-        public async static Task<IEnumerable<Track>> SearchTrackByString(string value)
+        public static List<Track> SearchTrackByString(string value)
         {
             string api = "https://api.deezer.com/search?q=" + value;
-            string json = await Request(api);
+            string json = Request(api);
             TrackList tracks = JsonConvert.DeserializeObject<TrackList>(json);
             //Console.WriteLine("Request finished");
 
             return tracks.Data;
         }
 
-        public async static Task<List<Album>> SearchAlbumByString(string value)
+        public static List<Album> SearchAlbumByString(string value)
         {
             string api = "https://api.deezer.com/search/album?q=" + value;
-            string json = await Request(api);
+            string json = Request(api);
             AlbumList albums = JsonConvert.DeserializeObject<AlbumList>(json);
             //Console.WriteLine("Request finished");
 
             return albums.Data;
         }
 
-        public async static Task<List<Artist>> SearchArtistByString(string value)
+        public static List<Artist> SearchArtistByString(string value)
         {
             string api = "https://api.deezer.com/search/artist?q=" + value;
-            string json = await Request(api);
+            string json = Request(api);
             ArtistList artists = JsonConvert.DeserializeObject<ArtistList>(json);
             //Console.WriteLine("Request finished");
 
             return artists.Data;
         }
 
-        public async static Task<List<Playlist>> SearchPlaylistByString(string value)
+        public static List<Playlist> SearchPlaylistByString(string value)
         {
             string api = "https://api.deezer.com/search/playlist?q=" + value;
-            string json = await Request(api);
+            string json = Request(api);
             PlaylistList playlists = JsonConvert.DeserializeObject<PlaylistList>(json);
             //Console.WriteLine("Request finished");
 
             return playlists.Data;
         }
 
-        public async static Task<Track> SearchTrackByID(long id)
+        public static Track SearchTrackByID(long id)
         {
             string api = "https://api.deezer.com/track/" + id.ToString();
-            string json = await Request(api);
+            string json = Request(api);
             Track track = JsonConvert.DeserializeObject<Track>(json);
             return track;
         }
 
-        public async static Task<Album> SearchAlbumByID(long id)
+        public static Album SearchAlbumByID(long id)
         {
             string api = "https://api.deezer.com/album/" + id.ToString();
-            string json = await Request(api);
+            string json = Request(api);
             Album album = JsonConvert.DeserializeObject<Album>(json);
             return album;
         }
 
-        public async static Task<Artist> SearchArtistByID(long id)
+        public static Artist SearchArtistByID(long id)
         {
             string api = "https://api.deezer.com/artist/" + id.ToString();
-            string json = await Request(api);
+            string json = Request(api);
             Artist artist = JsonConvert.DeserializeObject<Artist>(json);
             return artist;
         }
 
-        public async static Task<Playlist> SearchPlaylistByID(long id)
+        public static Playlist SearchPlaylistByID(long id)
         {
             string api = "https://api.deezer.com/playlist/" + id.ToString();
-            string json = await Request(api);
+            string json = Request(api);
             Playlist playlist = JsonConvert.DeserializeObject<Playlist>(json);
             return playlist;
         }
@@ -200,11 +199,11 @@ namespace Api
             }
         }
 
-        public async static Task<string> Request(string value)
+        public static string Request(string value)
         {
             WebRequest request = WebRequest.Create(value);
             request.Method = "GET";
-            HttpWebResponse response = (HttpWebResponse) await request.GetResponseAsync();
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             Stream dataStream = response.GetResponseStream();
 
             StreamReader reader = new StreamReader(dataStream);
