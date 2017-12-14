@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Api;
 
 namespace SupinfoDeezer
 {
@@ -20,9 +21,18 @@ namespace SupinfoDeezer
     /// </summary>
     public partial class PageAlbum : Page
     {
+        public List<Album> Albums { get; set; } = new List<Album>();
+
         public PageAlbum()
         {
             InitializeComponent();
+            DataContext = this;
+            GetAlbums();
+        }
+
+        public async Task GetAlbums(string text = "David Guetta")
+        {
+            Albums = Class1.SearchAlbumByString(text);
         }
     }
 }

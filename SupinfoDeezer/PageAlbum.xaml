@@ -9,16 +9,21 @@
       Title="PageAlbum">
 
         <Grid>
-            <ListView Margin="10" Name="Artiste" ItemsSource="{Binding Source={StaticResource myTodoList}}" >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <WrapPanel>
-                            <Image Source="{Binding Image}"/>
-                            <TextBlock Text="{Binding ALbum}"/>
-                            <TextBlock Text="{Binding Artiste}"/>
-                    </WrapPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </Grid>
+        <ListView ItemsSource="{Binding Albums}" Margin="10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="{Binding Cover}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Title}"/>
+                        <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{Binding Artist.Name}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
 </Page>
