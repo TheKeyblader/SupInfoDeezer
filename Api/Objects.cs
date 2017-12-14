@@ -126,4 +126,27 @@ namespace Api
         public int Id { get; set; }
         public string Name { get; set; }
     }
+
+    public class User
+    {
+       public int Id { get; set; }
+       public string Name { get; set; }
+       public string Lastname { get; set; }
+       public string Firstname { get; set; }
+       public string Email { get; set; }
+       public int Status { get; set; }
+       public DateTime Birthday { get; set; }
+       public DateTime Inscription_Date { get; set; }
+       public string Gender { get; set; }
+       public string Link { get; set; }
+       public string Picture_Small { get; set; }
+       public string Picture_Medium { get; set; }
+       public string Picture_Big { get; set; }
+       public string Picture_XL { get; set; }
+       public string Country { get; set; }
+       public string Lang { get; set; }
+       public bool Is_Kid { get; set; }
+       public string Tracklist { get; set; }
+
+    }
 }
