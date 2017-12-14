@@ -5,8 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SupinfoDeezer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="SupDeezer" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="19*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="17*"/>
+            <ColumnDefinition Width="17*"/>
+            <ColumnDefinition Width="17*"/>
+            <ColumnDefinition Width="17*"/>
+            <ColumnDefinition Width="17*"/>
+            <ColumnDefinition Width="15*"/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0" Grid.Row="3" Name="BAlbums">Albums</Button>
+        <Button Grid.Column="0" Grid.Row="4" Name="BArtistes">Artistes</Button>
+        <Button Grid.Column="0" Grid.Row="5" Name="BPlaylists">Playlists</Button>
+        <TextBlock Grid.Column="0" Grid.Row="7">Images</TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="8">Nom/Artiste</TextBlock>
+        <RichTextBox Name="BarreRecherche" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="2"></RichTextBox>
+        <TextBlock Grid.Column="5" Grid.RowSpan="2" VerticalAlignment="Center"
+                   HorizontalAlignment="Center">Login</TextBlock>
+        <Frame Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" Grid.RowSpan="6"
+    ScrollViewer.VerticalScrollBarVisibility="Visible" 
+    ScrollViewer.CanContentScroll="True"
+    x:Name="mainFrame" 
+    NavigationUIVisibility="Visible"/>
+
     </Grid>
 </Window>
