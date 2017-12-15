@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Api;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,8 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Diagnostics;
-using System.IO;
+using System.Windows.Threading;
 
 namespace SupinfoDeezer
 {
@@ -22,28 +23,28 @@ namespace SupinfoDeezer
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ObservableCollection<Track> Track { get; set; }
 
-        private Process player;
         public MainWindow()
         {
             InitializeComponent();
             mainFrame.Navigate(new Uri("TrackContainer.xaml", UriKind.RelativeOrAbsolute));
-            player = new Process();
-            player.StartInfo.WorkingDirectory = Directory.GetCurrentDirectory();
-            player.StartInfo.Arguments = "";
-            player.StartInfo.FileName = "TestWebPlayer.exe";
-
-            player.StartInfo.UseShellExecute = false;
-            player.StartInfo.RedirectStandardInput = true;
-            player.StartInfo.RedirectStandardOutput = true;
-            player.StartInfo.RedirectStandardError = true;
-            player.StartInfo.CreateNoWindow = true;
-            player.ErrorDataReceived += Receive;
-            player.OutputDataReceived += Receive;
-            player.EnableRaisingEvents = true;
-            player.Start();
-            player.BeginOutputReadLine();
-            player.BeginErrorReadLine();
+            DataContext = this;
+            Track = new ObservableCollection<Track>();
+            Track.Add(new Track
+            {
+                Title_Short = "",
+                Title_Version = "",
+                Artist = new Artist
+                {
+                    Name = ""
+                },
+                Album = new Album
+                {
+                    Cover = ""
+                },
+            });
+        }
         }
         public void Receive(object sender, DataReceivedEventArgs e)
         {
@@ -51,21 +52,60 @@ namespace SupinfoDeezer
         private async void BarreRecherche_TextChanged(object sender, TextChangedEventArgs e)
         {
             var textbox = (TextBox)sender;
-            if(textbox.Text != null && textbox.Text != "")
+
+            if(textbox.Text != null && textbox.Text != "" && mainFrame != null)
             {
-                await ((TrackContainer)mainFrame.Content).GetAlbums(textbox.Text);
+                if(mainFrame.Content is AlbumContainer)
+                {
+                    await ((AlbumContainer)mainFrame.Content).GetAlbums(textbox.Text);
+                }
+                else if(mainFrame.Content is TrackContainer)
+                {
+                    await ((TrackContainer)mainFrame.Content).GetTracks(textbox.Text);
+                }
             }
         }
 
-        private void BAlbums_Click(object sender, RoutedEventArgs e)
+        private async void SwitchToTracks(object sender, RoutedEventArgs e)
         {
-            Dispatcher.BeginInvoke(new Action(()=> {
-                player.StandardInput.WriteLineAsync("p 4231436").Wait();
-                player.StandardInput.FlushAsync().Wait();
-            }));
+            mainFrame.Content = null;
+            mainFrame.Navigate(new Uri("TrackContainer.xaml", UriKind.RelativeOrAbsolute));
+            mainFrame.NavigationService.Refresh();
+            mainFrame.Loaded += new RoutedEventHandler(LoadTracks);
+        }
 
-            //PlayerManager.StardThread();
-            //PlayerManager.AccesToken = "fr49mph7tV4KY3ukISkFHQysRpdCEbzb958dB320pM15OpFsQs";
+        private async void LoadTracks(object sender, RoutedEventArgs e)
+        {
+            if (BarreRecherche.Text != null && BarreRecherche.Text != "")
+            {
+                await ((TrackContainer)mainFrame.Content).GetTracks(BarreRecherche.Text);
+            }
+            else
+            {
+                await ((TrackContainer)mainFrame.Content).GetTracks("Daft Punk");
+            }
+        }
+
+        private void SwitchToAlbums(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Content = null;
+            mainFrame.Source = new Uri("AlbumContainer.xaml", UriKind.RelativeOrAbsolute);
+            //mainFrame.Navigate(new Uri("AlbumContainer.xaml", UriKind.RelativeOrAbsolute));
+            mainFrame.NavigationService.Refresh();
+            mainFrame.Loaded += new RoutedEventHandler(LoadAlbums);
+        }
+
+        private async void LoadAlbums(object sender, RoutedEventArgs e)
+        {
+            if (BarreRecherche.Text != null && BarreRecherche.Text != "")
+            {
+                await ((AlbumContainer)mainFrame.Content).GetAlbums(BarreRecherche.Text);
+            }
+            else
+            {
+                await ((AlbumContainer)mainFrame.Content).GetAlbums("Daft Punk");
+            }
+            mainFrame.Loaded -= LoadAlbums;
         }
     }
 }

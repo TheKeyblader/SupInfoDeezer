@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Api;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -13,34 +14,29 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Diagnostics;
-using Api;
 
 namespace SupinfoDeezer
 {
     /// <summary>
-    /// Logique d'interaction pour TrackContainer.xaml
+    /// Logique d'interaction pour AlbumContainer.xaml
     /// </summary>
-    /// 
-    
-
-    public partial class TrackContainer : Page
+    public partial class AlbumContainer : Page
     {
-        public ObservableCollection<Track> Tracks { get; set; } = new ObservableCollection<Track>();
+        public ObservableCollection<Album> Albums { get; set; }
 
-        public TrackContainer()
+        public AlbumContainer()
         {
             InitializeComponent();
             DataContext = this;
-            GetTracks();
+            GetAlbums();
         }
 
-        public async Task GetTracks(string text = "Daft Punk")
+        public async Task GetAlbums(string text = "Daft Punk")
         {
-            Tracks.Clear();
-            foreach(Track track in await Class1.SearchTrackByString(text))
+            Albums.Clear();
+            foreach (Album album in await Class1.SearchAlbumByString(text))
             {
-                Tracks.Add(track);
+                Albums.Add(album);
             }
         }
 
@@ -49,12 +45,8 @@ namespace SupinfoDeezer
             var list = (ListView)sender;
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.Track.Clear();
-            mainWindow.Track.Add(Tracks[list.SelectedIndex]);
-            
-        }
-
-        private void Container_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
-        {
+            mainWindow.Track.Add(Albums[list.SelectedIndex].Tracks[0]);
+            MessageBox.Show(mainWindow.Track[0].Title_Short);
         }
     }
 }

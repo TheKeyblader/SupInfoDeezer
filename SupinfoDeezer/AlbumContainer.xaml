@@ -1,4 +1,4 @@
-﻿<Page x:Class="SupinfoDeezer.TrackContainer"
+﻿<Page x:Class="SupinfoDeezer.AlbumContainer"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,38 +6,26 @@
       xmlns:local="clr-namespace:SupinfoDeezer"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="TrackContainer">
+      Title="AlbumContainer">
 
-        <Grid Background="#101010">
-        <ListView Name="Container" ItemsSource="{Binding Tracks}" Margin="10" MouseDoubleClick="GetId" ScrollBar.Scroll="Container_Scroll" 
-                  Background="#101010" Foreground="WhiteSmoke" >
-            
+
+    <Grid>
+        <ListView Name="Container" ItemsSource="{Binding Albums}" Margin="10" MouseDoubleClick="GetId">
             <ListView.ItemTemplate>
-                
                 <DataTemplate>
-                    
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="1*" />
                         </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Source="{Binding Album.Cover}" Height="100"/>
-                        <StackPanel Grid.Column="1" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
-
-                            <TextBlock Text="{Binding Title_Short}" FontSize="20"/>
-                            <TextBlock Text="{Binding Title_Version}" FontSize="12"/>
+                        <Image Grid.Column="0" Source="{Binding Cover}" Height="100"/>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="{Binding Title}" FontSize="20"/>
                             <TextBlock Text="{Binding Artist.Name}" FontSize="16"/>
                         </StackPanel>
-                        
                     </Grid>
-                    
                 </DataTemplate>
-                
             </ListView.ItemTemplate>
-            
         </ListView>
-        
     </Grid>
-    
 </Page>
-    
