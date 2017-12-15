@@ -57,10 +57,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AlbumContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AlbumContainer.xaml.cs">
+      <DependentUpon>AlbumContainer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -130,6 +137,24 @@
       <Project>{ee38cd12-8afc-4082-af0e-fe0520b4d855}</Project>
       <Name>Api</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Affiche.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Button_Next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Button_Pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Button_Play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Button_Preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Logo_SupDeezer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,7 +8,7 @@
       d:DesignHeight="337" d:DesignWidth="488"
       Title="PageAccueil">
 
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>
             <RowDefinition Height="30*"/>
