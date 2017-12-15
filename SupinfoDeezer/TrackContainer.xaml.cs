@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 using Api;
 
 namespace SupinfoDeezer
@@ -20,6 +21,9 @@ namespace SupinfoDeezer
     /// <summary>
     /// Logique d'interaction pour TrackContainer.xaml
     /// </summary>
+    /// 
+    
+
     public partial class TrackContainer : Page
     {
         public ObservableCollection<Track> Tracks { get; set; } = new ObservableCollection<Track>();
@@ -51,7 +55,6 @@ namespace SupinfoDeezer
 
         private void Container_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
         {
-
         }
     }
 }

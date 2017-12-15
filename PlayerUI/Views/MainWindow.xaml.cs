@@ -10,7 +10,11 @@ namespace PlayerUI.Views
         public MainWindow()
         {
             InitializeComponent();
-            Title = "Lol";
+        }
+
+        private void BarreRecherche_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
         }
     }
 }

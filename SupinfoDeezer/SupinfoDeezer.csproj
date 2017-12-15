@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,6 +33,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -97,6 +101,7 @@
     <Compile Include="PageAccueil.xaml.cs">
       <DependentUpon>PageAccueil.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PlayerManager.cs" />
     <Compile Include="TrackContainer.xaml.cs">
       <DependentUpon>TrackContainer.xaml</DependentUpon>
     </Compile>
@@ -136,6 +141,14 @@
     <ProjectReference Include="..\Api\Api.csproj">
       <Project>{ee38cd12-8afc-4082-af0e-fe0520b4d855}</Project>
       <Name>Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Player\Player.csproj">
+      <Project>{e0a2b626-7a7e-46ac-8cc6-454e5d940260}</Project>
+      <Name>Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestWebPlayer\TestWebPlayer.csproj">
+      <Project>{78563e9b-af40-45f1-90b4-77a841356980}</Project>
+      <Name>TestWebPlayer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

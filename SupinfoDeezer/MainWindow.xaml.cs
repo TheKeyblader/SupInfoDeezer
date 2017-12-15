@@ -45,7 +45,10 @@ namespace SupinfoDeezer
                 },
             });
         }
-
+        }
+        public void Receive(object sender, DataReceivedEventArgs e)
+        {
+        }
         private async void BarreRecherche_TextChanged(object sender, TextChangedEventArgs e)
         {
             var textbox = (TextBox)sender;

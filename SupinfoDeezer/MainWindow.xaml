@@ -28,7 +28,6 @@
             <ColumnDefinition Width="17*"/>
             <ColumnDefinition Width="15*"/>
         </Grid.ColumnDefinitions>
-
         <Rectangle Grid.Column="0" Grid.Row="0" Grid.RowSpan="10" Fill="Black" Stretch="UniformToFill"/>
         <Rectangle Grid.Column="0" Grid.Row="6"  Fill="Black" Stretch="UniformToFill"/>
         <Rectangle Grid.Column="1" Grid.Row="9" Grid.ColumnSpan="4" Fill="#282828" Stretch="UniformToFill"/>
