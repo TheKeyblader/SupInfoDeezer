@@ -10,6 +10,7 @@ namespace PlayerUI.Views
         public MainWindow()
         {
             InitializeComponent();
+            Title = "Lol";
         }
     }
 }
