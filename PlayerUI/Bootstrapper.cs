@@ -15,11 +15,15 @@ namespace PlayerUI
 
         protected override void InitializeShell()
         {
+            base.InitializeShell();
+
+            Application.Current.MainWindow = (Window)this.Shell;
             Application.Current.MainWindow.Show();
         }
 
         protected override void ConfigureModuleCatalog()
         {
+            base.ConfigureModuleCatalog();
             var moduleCatalog = (ModuleCatalog)ModuleCatalog;
             //moduleCatalog.AddModule(typeof(YOUR_MODULE));
         }
