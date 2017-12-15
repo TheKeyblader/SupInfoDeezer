@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
 using Api;
+using System.Windows.Threading;
 
 namespace SupinfoDeezer
 {
@@ -50,6 +51,11 @@ namespace SupinfoDeezer
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.Track.Clear();
             mainWindow.Track.Add(Tracks[list.SelectedIndex]);
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                mainWindow.player.StandardInput.WriteLineAsync("p "+mainWindow.Track.First().Id.ToString()).Wait();
+                mainWindow.player.StandardInput.FlushAsync();
+            }),DispatcherPriority.Send);
             
         }
 

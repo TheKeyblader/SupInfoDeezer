@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +26,7 @@ namespace SupinfoDeezer
     public partial class MainWindow : Window
     {
         public ObservableCollection<Track> Track { get; set; }
-
+        public Process player;
         public MainWindow()
         {
             InitializeComponent();
@@ -44,10 +46,31 @@ namespace SupinfoDeezer
                     Cover = ""
                 },
             });
-        }
+            player = new Process();
+            player.StartInfo.WorkingDirectory = Directory.GetCurrentDirectory();
+            player.StartInfo.Arguments = "";
+            player.StartInfo.FileName = "TestWebPlayer.exe";
+
+            player.StartInfo.UseShellExecute = false;
+            player.StartInfo.RedirectStandardInput = true;
+            player.StartInfo.RedirectStandardOutput = true;
+            player.StartInfo.RedirectStandardError = true;
+            player.StartInfo.CreateNoWindow = true;
+            player.ErrorDataReceived += Receive;
+            player.OutputDataReceived += Receive;
+            player.EnableRaisingEvents = true;
+            player.Start();
+            player.BeginOutputReadLine();
+            player.BeginErrorReadLine();
+            Application.Current.Exit += new ExitEventHandler(Exit);
         }
         public void Receive(object sender, DataReceivedEventArgs e)
         {
+            Console.WriteLine(e.Data);
+        }
+        public void Exit(object sender, ExitEventArgs e)
+        {
+            player.Kill();
         }
         private async void BarreRecherche_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -106,6 +129,42 @@ namespace SupinfoDeezer
                 await ((AlbumContainer)mainFrame.Content).GetAlbums("Daft Punk");
             }
             mainFrame.Loaded -= LoadAlbums;
+        }
+
+        private void PlayCLick(object sender, RoutedEventArgs e)
+        {
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                player.StandardInput.WriteLineAsync("play").Wait();
+                player.StandardInput.FlushAsync().Wait();
+            }),DispatcherPriority.Send);
+        }
+
+        private void Pause(object sender, RoutedEventArgs e)
+        {
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                player.StandardInput.WriteLineAsync("pause").Wait();
+                player.StandardInput.FlushAsync().Wait();
+            }),DispatcherPriority.Send);
+        }
+
+        private void Augmente(object sender, RoutedEventArgs e)
+        {
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                player.StandardInput.WriteLineAsync("+").Wait();
+                player.StandardInput.FlushAsync().Wait();
+            }), DispatcherPriority.Send);
+        }
+
+        private void Baisser(object sender, RoutedEventArgs e)
+        {
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                player.StandardInput.WriteLineAsync("-").Wait();
+                player.StandardInput.FlushAsync().Wait();
+            }), DispatcherPriority.Send);
         }
     }
 }

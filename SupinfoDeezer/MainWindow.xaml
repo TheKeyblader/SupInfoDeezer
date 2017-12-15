@@ -105,24 +105,42 @@
 
         
 
-        <Button Background="Transparent" BorderBrush="Transparent" Height="40" Width="40" Grid.Column="2" Grid.Row="9">
+        <Button Background="Transparent" BorderBrush="Transparent" Height="40" Width="40" Grid.Column="2" Grid.Row="9" Click="PlayCLick">
             <StackPanel>
                 <Image  Source="Button_Play.png" />
             </StackPanel>
         </Button>
-        <Button Background="Transparent" BorderBrush="Transparent" Height="40" Width="40" Grid.Column="3" Grid.Row="9">
+        <Button Background="Transparent" BorderBrush="Transparent" Height="40" Width="40" Grid.Column="3" Grid.Row="9" Click="Pause">
             <StackPanel>
                 <Image  Source="Button_Pause.png" />
             </StackPanel>
         </Button>
-        <Button Background="Transparent" BorderBrush="Transparent" Height="40" Width="40" Grid.Column="4" Grid.Row="9">
+        <Button Background="Transparent" BorderBrush="Transparent" Height="40" Width="40" Grid.Column="4" Grid.Row="9" Click="Augmente">
             <StackPanel>
-                <Image  Source="Button_Next.png" />
+                <Image  Source="Button_Next.png" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
             </StackPanel>
         </Button>
-        <Button Background="Transparent" BorderBrush="Transparent" Height="40" Width="40" Grid.Column="1" Grid.Row="9">
+        <Button Background="Transparent" BorderBrush="Transparent" Height="40" Width="40" Grid.Column="1" Grid.Row="9" Click="Baisser">
             <StackPanel>
-                <Image  Source="Button_Preview.png" />
+                <Image  Source="Button_Preview.png" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
             </StackPanel>
         </Button>
         <Image Grid.Column="5" Grid.Row="2" Grid.RowSpan="7" Source="Affiche.png" />
