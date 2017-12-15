@@ -26,13 +26,13 @@ namespace TestWebPlayer
             connect.SetOfflineMode(false);
             while (true)
             {
-                var k = Console.ReadKey().KeyChar;
+                var k = Console.ReadLine().Split(' ');
 
-                if(k == 'q') { return; }
-                if(k == 'p') { player.Load("dzmedia:///track/4231436"); }
-                if(k == ' ') { if (player.Playing) { player.Pause(); } else { player.Resume(); } }
-                if(k == '+') { if(player.Volume +10 > 100) { player.SetVolume(100);} else { player.SetVolume(player.Volume + 10); } }
-                if(k == '-') { if (player.Volume - 10 < 0) { player.SetVolume(0); } else { player.SetVolume(player.Volume - 10); } }
+                if(k[0] == "q") { return; }
+                if(k[0] == "p") { player.Load("dzmedia:///track/"+k[1]); }
+                if(k[0] == "pause") { if (player.Playing) { player.Pause(); } else { player.Resume(); } }
+                if(k[0] == "+") { if(player.Volume +10 > 100) { player.SetVolume(100);} else { player.SetVolume(player.Volume + 10); } }
+                if(k[0] == "-") { if (player.Volume - 10 < 0) { player.SetVolume(0); } else { player.SetVolume(player.Volume - 10); } }
             }
 
         }
